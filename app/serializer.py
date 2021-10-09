@@ -1,9 +1,14 @@
 from rest_framework import serializers
 
-from .models import Target
+from .models import Target, Blog
 
 
 class TargetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Target
-        fields = ('name', 'domain')
+        fields = ('id', 'name', 'host')
+
+class BlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blog
+        fields = ('id', 'title', 'contents')
