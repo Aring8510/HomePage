@@ -2,7 +2,7 @@ from django.db.models import query
 from django.shortcuts import render
 from django.http.response import JsonResponse
 from ping3 import ping
-from rest_framework import viewsets, filters
+from rest_framework import generics, viewsets, filters
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -25,6 +25,17 @@ class Targets(viewsets.ModelViewSet):
     serializer_class = TargetSerializer
     queryset = Target.objects.all()
 
+class getOneTarget(generics.RetrieveAPIView):
+    serializer_class = TargetSerializer
+    queryset = Target.objects.all()
+    lookup_field = 'pk'
+
+
 class Blogs(viewsets.ModelViewSet):
     serializer_class = BlogSerializer
     queryset = Blog.objects.all()
+
+class getOneBlog(generics.RetrieveAPIView):
+    serializer_class = BlogSerializer
+    queryset = Blog.objects.all()
+    lookup_field = 'pk'
